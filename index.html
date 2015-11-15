@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>React-tabs-navigation by pepjo</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>React-tabs-navigation</h1>
+        <p>react-tabs-navigation is a nice react component that enables navigation through tabs in your web app.</p>
+
+        <p class="view"><a href="https://github.com/pepjo/react-tabs-navigation">View the Project on GitHub <small>pepjo/react-tabs-navigation</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/pepjo/react-tabs-navigation/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/pepjo/react-tabs-navigation/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/pepjo/react-tabs-navigation">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="react-tabs-navigation" class="anchor" href="#react-tabs-navigation" aria-hidden="true"><span class="octicon octicon-link"></span></a>react-tabs-navigation</h1>
+
+<p>This react component enables navigating through tabs in your web app.
+It is composed of three different parts:</p>
+
+<ol>
+<li>
+<p>Banner</p>
+
+<p>This content does not change with tabs and sits on top of the tabs bar. When the user scrolls past the banner the tabs bar stick on top of the page</p>
+</li>
+<li>
+<p>Tabs</p>
+
+<p>The tabs of the element. They are horizontal. You can define their styles, hover styles and selected styles.</p>
+
+<p>The selected tab in underlined, this animates to the newly selected tab when a new tab is selected.</p>
+</li>
+<li>
+<p>Content</p>
+
+<p>The content that changes when the user changes the tab.</p>
+</li>
+</ol>
+
+<h2>
+<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing</h2>
+
+<div class="highlight highlight-source-shell"><pre>$ npm install react-tabs-navigation</pre></div>
+
+<h2>
+<a id="props" class="anchor" href="#props" aria-hidden="true"><span class="octicon octicon-link"></span></a>Props</h2>
+
+<p>This component accept the following props:</p>
+
+<ul>
+<li>
+<p>banner [object]</p>
+
+<p>content over the tab bar</p>
+
+<ul>
+<li>
+<p>children [func|node]</p>
+
+<p>a node or a function that returns a node (recommended)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>color [string]</p>
+
+<p>main color (can be overridden on lineStyles and tabStyles)</p>
+</li>
+<li>
+<p>fixOffset [number]</p>
+
+<p>The tabs bar fixes on the sreen when you scroll pass to it.
+If you want it to fix below the upper limit of the document set here the offset
+If you want it to not fix set the offset to at least -(the height of the bar)</p>
+</li>
+<li>
+<p>lineStyle [object]</p>
+
+<p>Styles of the underline.
+Use <code>backgroundColor</code> to change the color and height to change the <code>width</code> (default 3px) of the line.
+(Accepts Radium properties like <code>:hover</code>)</p>
+</li>
+<li>
+<p>onTabChange [func]</p>
+
+<p>Function that gets executed when a tab changes, first argument is the index of the tab</p>
+</li>
+<li>
+<p>selected [string|number]</p>
+
+<p>The index or the <code>keyName</code> of the tab selected initially</p>
+</li>
+<li>
+<p>selectedTabStyle [object]</p>
+
+<p>The style of the tab when it is selected.
+(Accepts Radium properties like <code>:hover</code>)</p>
+</li>
+<li>
+<p><strong>tabs</strong> [array] -required-</p>
+
+<p>An array of objects, one for each tab</p>
+
+<ul>
+<li>
+<p>children [func|node]</p>
+
+<p>a node or a function that returns a node (recommended)</p>
+</li>
+<li>
+<p>displayName [string]</p>
+
+<p>the name displayed on the tab</p>
+</li>
+</ul>
+</li>
+<li>
+<p>tabsBarClassName [string]</p>
+
+<p>className of the tabs bar element</p>
+</li>
+<li>
+<p>tabsBarStyle [object]</p>
+
+<p>The style of the tabs bar</p>
+</li>
+<li>
+<p>tabsClassName [string]</p>
+
+<p>className of each tab. When they are selected they also have the class <code>is-selected</code></p>
+</li>
+<li>
+<p>tabsStyle [object]</p>
+
+<p>The style of the tab.
+(Accepts Radium properties like <code>:hover</code>)</p>
+</li>
+</ul>
+
+<h2>
+<a id="simple-example" class="anchor" href="#simple-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple example</h2>
+
+<p>One of the simplest examples one could use</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> <span class="pl-smi">Tabs</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react-tabs-navigation<span class="pl-pds">'</span></span>
+
+<span class="pl-k">&lt;</span>Tabs
+  banner<span class="pl-k">=</span>{{
+    children<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Content over the tabs!<span class="pl-pds">'</span></span>
+  }}
+  tabs<span class="pl-k">=</span>{[
+    {
+      children<span class="pl-k">:</span> () <span class="pl-k">=&gt;</span> (
+        <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+          This is the first tab content
+        <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+      ),
+      displayName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Tab 1<span class="pl-pds">'</span></span>
+    },
+    {
+      children<span class="pl-k">:</span> () <span class="pl-k">=&gt;</span> (
+        <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+          This is the second tab content
+        <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+      ),
+      displayName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Tab 2<span class="pl-pds">'</span></span>
+    }
+  ]}
+<span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+
+<h2>
+<a id="full-example" class="anchor" href="#full-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Full example</h2>
+
+<p>A more complete example using more functionalities</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> <span class="pl-smi">Tabs</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react-tabs-navigation<span class="pl-pds">'</span></span>
+
+<span class="pl-k">&lt;</span>Tabs
+  banner<span class="pl-k">=</span>{{
+    children<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Content over the tabs!<span class="pl-pds">'</span></span>
+  }}
+  tabs<span class="pl-k">=</span>{[
+    {
+      children<span class="pl-k">:</span> () <span class="pl-k">=&gt;</span> (
+        <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+          This is the first tab content
+        <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+      ),
+      displayName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Tab 1<span class="pl-pds">'</span></span>
+    },
+    {
+      children<span class="pl-k">:</span> () <span class="pl-k">=&gt;</span> (
+        <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+          This is the second tab content
+        <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+      ),
+      displayName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Tab 2<span class="pl-pds">'</span></span>
+    }
+  ]}
+<span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+
+<h2>
+<a id="to-do-list" class="anchor" href="#to-do-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>To do list</h2>
+
+<ul>
+<li>[ ] Use travis</li>
+<li>[ ] Write some tests</li>
+<li>[ ] Optional animation when changing between tabs</li>
+<li>[ ] Keyboard naviation</li>
+</ul>
+
+<h2>
+<a id="contribute" class="anchor" href="#contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribute</h2>
+
+<h3>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h3>
+
+<ul>
+<li>Submit a ticket for your issue on GitHub in <a href="https://github.com/pepjo/react-tabs-navigation/issues">Repository issues</a>
+</li>
+</ul>
+
+<h3>
+<a id="making-changes" class="anchor" href="#making-changes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Making Changes</h3>
+
+<p>We are following <a href="http://nvie.com/posts/a-successful-git-branching-model/">Gitflow</a> workflow.</p>
+
+<ul>
+<li>Create feature branch from <code>master</code> branch called <code>feature/{ISSUE}</code> where <code>{ISSUE}</code> is GitHub issue identifier e.g. <code>feature/123</code>
+</li>
+<li>Make commits of logical units</li>
+<li>Don't forget about tests! :)</li>
+<li>Stick to code standards</li>
+</ul>
+
+<h3>
+<a id="submiting-changes" class="anchor" href="#submiting-changes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Submiting Changes</h3>
+
+<ol>
+<li>Push your branch to base repository</li>
+<li>Submit a pull request to <code>master</code> branch</li>
+<li>Wait for someone to review your changes and merge it</li>
+<li>If your pull request is tagged as <code>To correct</code> you should fix your code as soon as possible and go back to point 3.</li>
+</ol>
+
+<h2>
+<a id="mit-license" class="anchor" href="#mit-license" aria-hidden="true"><span class="octicon octicon-link"></span></a>MIT License</h2>
+
+<p>Copyright (c) 2015, Pep Rodeja</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/pepjo">pepjo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
