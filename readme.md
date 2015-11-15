@@ -1,9 +1,6 @@
 react-tabs-navigation
 =====================
 
-Description
------------
-
 This react component enables navigating through tabs in your web app.
 It is composed of three different parts:
 
@@ -20,6 +17,13 @@ It is composed of three different parts:
 3. Content
 
    The content that changes when the user changes the tab.
+
+Installing
+----------
+
+```bash
+$ npm install react-tabs-navigation
+```
 
 Props
 -----
@@ -98,6 +102,8 @@ Simple example
 One of the simplest examples one could use
 
 ````javascript
+import Tabs from 'react-tabs-navigation'
+
 <Tabs
   banner={{
     children: 'Content over the tabs!'
@@ -129,6 +135,8 @@ Full example
 A more complete example using more functionalities
 
 ````javascript
+import Tabs from 'react-tabs-navigation'
+
 <Tabs
   banner={{
     children: 'Content over the tabs!'
@@ -157,6 +165,7 @@ A more complete example using more functionalities
 To do list
 ----------
 
+- [ ] Use travis
 - [ ] Write some tests
 - [ ] Optional animation when changing between tabs
 - [ ] Keyboard naviation
