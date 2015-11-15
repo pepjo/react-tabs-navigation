@@ -1,6 +1,8 @@
 react-tabs-navigation
 =====================
 
+Note: As of now babel is required because es6 and jsx are used.
+
 This react component enables navigating through tabs in your web app.
 It is composed of three different parts:
 
