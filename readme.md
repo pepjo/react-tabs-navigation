@@ -63,7 +63,7 @@ This component accept the following props:
   The style of the tab when it is selected.
   (Accepts Radium properties like `:hover`)
 
-* **tabs** [array] (required)
+* **tabs** [array] -required-
 
   An array of objects, one for each tab
 
