@@ -159,6 +159,7 @@ To do list
 
 - [ ] Write some tests
 - [ ] Optional animation when changing between tabs
+- [ ] Keyboard naviation
 
 Contribute
 ------------
