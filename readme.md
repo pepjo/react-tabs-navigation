@@ -8,11 +8,17 @@ This react component enables navigating through tabs in your web app.
 It is composed of three different parts:
 
 1. Banner
+
    This content does not change with tabs and sits on top of the tabs bar. When the user scrolls past the banner the tabs bar stick on top of the page
+
 2. Tabs
+
    The tabs of the element. They are horizontal. You can define their styles, hover styles and selected styles.
+
    The selected tab in underlined, this animates to the newly selected tab when a new tab is selected.
+
 3. Content
+
    The content that changes when the user changes the tab.
 
 Props
@@ -21,39 +27,68 @@ Props
 This component accept the following props:
 
 * banner [object]
+
   content over the tab bar
+
   * children [func|node]
+
     a node or a function that returns a node (recommended)
+
 * color [string]
+
   main color (can be overridden on lineStyles and tabStyles)
+
 * fixOffset [number]
+
   The tabs bar fixes on the sreen when you scroll pass to it.
   If you want it to fix below the upper limit of the document set here the offset
   If you want it to not fix set the offset to at least -(the height of the bar)
+
 * lineStyle [object]
+
   Styles of the underline.
   Use `backgroundColor` to change the color and height to change the `width` (default 3px) of the line.
   (Accepts Radium properties like `:hover`)
+
 * onTabChange [func]
+
   Function that gets executed when a tab changes, first argument is the index of the tab
+
 * selected [string|number]
+
   The index or the `keyName` of the tab selected initially
+
 * selectedTabStyle [object]
+
   The style of the tab when it is selected.
   (Accepts Radium properties like `:hover`)
+
 * **tabs** [array] (required)
+
   An array of objects, one for each tab
+
   * children [func|node]
-  a node or a function that returns a node (recommended)
+
+    a node or a function that returns a node (recommended)
+
   * displayName [string]
-  the name displayed on the tab
+
+    the name displayed on the tab
+
 * tabsBarClassName [string]
+
   className of the tabs bar element
+
 * tabsBarStyle [object]
+
   The style of the tabs bar
+
 * tabsClassName [string]
+
   className of each tab. When they are selected they also have the class `is-selected`
+
 * tabsStyle [object]
+
   The style of the tab.
   (Accepts Radium properties like `:hover`)
 
