@@ -31,7 +31,7 @@ $ npm install react-tabs-navigation
 Live demo
 ---------
 
-Here: http://
+Here: http://pepjo.github.io/react-tabs-navigation/
 
 Props
 -----
