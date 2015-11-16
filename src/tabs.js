@@ -29,6 +29,14 @@ const defaultStyles = {
     height: 40,
     paddingTop: 15,
     marginTop: 0,
+    display: 'block',
+    float: 'left',
+    textAlign: 'center',
+    cursor: 'pointer',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    userSelect: 'none',
     backgroundColor: 'rgb(255, 255, 255)',
     ':hover': {
       backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()

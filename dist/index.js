@@ -1,76 +1,62 @@
 
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+import React from 'react';
+import ReactDom from 'react-dom';
 
-var _react = require('react');
+import Tabs from './tabs.js';
+import { renderFunction } from './functions.js';
 
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _tabs = require('./tabs.js');
-
-var _tabs2 = _interopRequireDefault(_tabs);
-
-var _functions = require('./functions.js');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _react2.default.createClass({
+export default React.createClass({
   displayName: 'tabsNavigationMenu',
   propTypes: {
-    banner: _react2.default.PropTypes.shape({ // Banner content (optional)
-      children: _react2.default.PropTypes.oneOfType([// Tab initialy selected
-      _react2.default.PropTypes.func, _react2.default.PropTypes.node])
+    banner: React.PropTypes.shape({ // Banner content (optional)
+      children: React.PropTypes.oneOfType([// Tab initialy selected
+      React.PropTypes.func, React.PropTypes.node])
     }),
-    color: _react2.default.PropTypes.string,
-    fixOffset: _react2.default.PropTypes.number,
-    lineStyle: _react2.default.PropTypes.object,
-    onTabChange: _react2.default.PropTypes.func,
-    selected: _react2.default.PropTypes.oneOfType([// Tab initialy selected
-    _react2.default.PropTypes.string, _react2.default.PropTypes.number]),
-    selectedTabStyle: _react2.default.PropTypes.object,
-    tabs: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.shape({
-      children: _react2.default.PropTypes.oneOfType([// Tab initialy selected
-      _react2.default.PropTypes.func, _react2.default.PropTypes.node]),
-      displayName: _react2.default.PropTypes.string.isRequired
+    color: React.PropTypes.string,
+    fixOffset: React.PropTypes.number,
+    lineStyle: React.PropTypes.object,
+    onTabChange: React.PropTypes.func,
+    selected: React.PropTypes.oneOfType([// Tab initialy selected
+    React.PropTypes.string, React.PropTypes.number]),
+    selectedTabStyle: React.PropTypes.object,
+    tabs: React.PropTypes.arrayOf(React.PropTypes.shape({
+      children: React.PropTypes.oneOfType([// Tab initialy selected
+      React.PropTypes.func, React.PropTypes.node]),
+      displayName: React.PropTypes.string.isRequired
     })),
-    tabsBarClassName: _react2.default.PropTypes.string,
-    tabsBarStyle: _react2.default.PropTypes.object,
-    tabsClassName: _react2.default.PropTypes.string,
-    tabsStyle: _react2.default.PropTypes.object
+    tabsBarClassName: React.PropTypes.string,
+    tabsBarStyle: React.PropTypes.object,
+    tabsClassName: React.PropTypes.string,
+    tabsStyle: React.PropTypes.object
   },
-  getDefaultProps: function getDefaultProps() {
+  getDefaultProps() {
     return {
       fixOffset: 0,
       prev: 'Next',
       views: []
     };
   },
-  getInitialState: function getInitialState() {
+  getInitialState() {
     return {
       selectedTab: this.props.selected || 0,
       width: 300
     };
   },
-  componentDidMount: function componentDidMount() {
+  componentDidMount() {
     window.addEventListener('resize', this.calculateWidth);
     this.calculateWidth();
   },
-  componentWillUnmount: function componentWillUnmount() {
+  componentWillUnmount() {
     window.removeEventListener('resize', this.calculateWidth);
   },
-  calculateWidth: function calculateWidth() {
+  calculateWidth() {
     this.setState({
-      width: _reactDom2.default.findDOMNode(this.refs.tabsContainer).clientWidth
+      width: ReactDom.findDOMNode(this.refs.tabsContainer).clientWidth
     });
   },
-  handleTabChange: function handleTabChange(i) {
+  handleTabChange(i) {
     this.setState({
       selectedTab: i
     });
@@ -78,23 +64,23 @@ exports.default = _react2.default.createClass({
       this.props.onTabChange(i);
     }
   },
-  render: function render() {
-    return _react2.default.createElement(
+  render() {
+    return React.createElement(
       'div',
       null,
-      _react2.default.createElement(
+      React.createElement(
         'div',
         null,
-        (0, _functions.renderFunction)(this.props.banner && this.props.banner.children)
+        renderFunction(this.props.banner && this.props.banner.children)
       ),
-      _react2.default.createElement(
+      React.createElement(
         'div',
         {
           ref: 'tabsContainer' },
-        _react2.default.createElement(_tabs2.default, {
+        React.createElement(Tabs, {
           clic: this.handleTabChange,
           color: this.props.color,
-          elements: this.props.tabs.map(function (item) {
+          elements: this.props.tabs.map(item => {
             return item.displayName;
           }),
           fixOffset: this.props.fixOffset,
@@ -108,10 +94,10 @@ exports.default = _react2.default.createClass({
           widthB: this.state.width
         })
       ),
-      _react2.default.createElement(
+      React.createElement(
         'div',
         null,
-        (0, _functions.renderFunction)(this.props.tabs[this.state.selectedTab] && this.props.tabs[this.state.selectedTab].children)
+        renderFunction(this.props.tabs[this.state.selectedTab] && this.props.tabs[this.state.selectedTab].children)
       )
     );
   }

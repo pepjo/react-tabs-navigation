@@ -1,32 +1,15 @@
 
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+import Color from 'color';
+import Radium from 'radium';
+import React from 'react';
+import ReactDom from 'react-dom';
 
-var _color = require('color');
+window.Color = Color;
 
-var _color2 = _interopRequireDefault(_color);
-
-var _radium = require('radium');
-
-var _radium2 = _interopRequireDefault(_radium);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-window.Color = _color2.default;
-
-var defaultColor = 'rgb(11, 104, 159)';
-var defaultStyles = {
+const defaultColor = 'rgb(11, 104, 159)';
+const defaultStyles = {
   color: defaultColor,
   lineStyle: {
     backgroundColor: defaultColor,
@@ -35,7 +18,7 @@ var defaultStyles = {
     transition: 'margin-left 0.25s cubic-bezier(0.15, 0.48, 0.42, 1.13)'
   },
   selectedTabStyle: {
-    backgroundColor: (0, _color2.default)(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
+    backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
   },
   tabsBarStyle: {
     height: '55px',
@@ -46,30 +29,38 @@ var defaultStyles = {
     height: 40,
     paddingTop: 15,
     marginTop: 0,
+    display: 'block',
+    float: 'left',
+    textAlign: 'center',
+    cursor: 'pointer',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    userSelect: 'none',
     backgroundColor: 'rgb(255, 255, 255)',
     ':hover': {
-      backgroundColor: (0, _color2.default)(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
+      backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
     }
   }
 };
 
-exports.default = (0, _radium2.default)(_react2.default.createClass({
+export default Radium(React.createClass({
   displayName: 'tabsNavigationMenu__tabs',
   propTypes: {
-    clic: _react2.default.PropTypes.func,
-    color: _react2.default.PropTypes.string,
-    elements: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.string),
-    fixOffset: _react2.default.PropTypes.number,
-    lineStyle: _react2.default.PropTypes.object,
-    selected: _react2.default.PropTypes.number,
-    selectedTabStyle: _react2.default.PropTypes.object,
-    tabsBarClassName: _react2.default.PropTypes.string,
-    tabsBarStyle: _react2.default.PropTypes.object,
-    tabsClassName: _react2.default.PropTypes.string,
-    tabsStyle: _react2.default.PropTypes.object,
-    widthB: _react2.default.PropTypes.number
+    clic: React.PropTypes.func,
+    color: React.PropTypes.string,
+    elements: React.PropTypes.arrayOf(React.PropTypes.string),
+    fixOffset: React.PropTypes.number,
+    lineStyle: React.PropTypes.object,
+    selected: React.PropTypes.number,
+    selectedTabStyle: React.PropTypes.object,
+    tabsBarClassName: React.PropTypes.string,
+    tabsBarStyle: React.PropTypes.object,
+    tabsClassName: React.PropTypes.string,
+    tabsStyle: React.PropTypes.object,
+    widthB: React.PropTypes.number
   },
-  getDefaultProps: function getDefaultProps() {
+  getDefaultProps() {
     return {
       clic: null,
       elements: ['tab1', 'tab2'],
@@ -79,22 +70,22 @@ exports.default = (0, _radium2.default)(_react2.default.createClass({
       tabsClassName: ''
     };
   },
-  getInitialState: function getInitialState() {
+  getInitialState() {
     return {
       menuFixed: false
     };
   },
-  componentDidMount: function componentDidMount() {
+  componentDidMount() {
     window.addEventListener('scroll', this.handleElementScroll);
   },
-  componentWillUnmount: function componentWillUnmount() {
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.handleElementScroll);
   },
 
   // We should handle scroll events in order to detect when the bar should be
   // fixed
-  handleElementScroll: function handleElementScroll() {
-    var top = _reactDom2.default.findDOMNode(this.refs.bar).offsetTop - this.props.fixOffset;
+  handleElementScroll() {
+    let top = ReactDom.findDOMNode(this.refs.bar).offsetTop - this.props.fixOffset;
     if (window.scrollY > top) {
       this.setState({
         menuFixed: true
@@ -109,8 +100,8 @@ exports.default = (0, _radium2.default)(_react2.default.createClass({
   // This modifies the styles defined by the user if a color is defined
   // But no color is defined inside the props styles
   // or if no height and paddingTop are defined
-  styles: function styles() {
-    var styles = {
+  styles() {
+    let styles = {
       lineStyle: this.props.lineStyle || {},
       selectedTabStyle: this.props.selectedTabStyle || {},
       tabsStyle: this.props.tabsStyle || {},
@@ -122,7 +113,7 @@ exports.default = (0, _radium2.default)(_react2.default.createClass({
       }
 
       if (!styles.selectedTabStyle.backgroundColor) {
-        styles.selectedTabStyle.backgroundColor = (0, _color2.default)(this.props.color).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString();
+        styles.selectedTabStyle.backgroundColor = Color(this.props.color).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString();
       }
 
       if (!styles.tabsStyle[':hover']) {
@@ -146,73 +137,72 @@ exports.default = (0, _radium2.default)(_react2.default.createClass({
   },
 
   // We handle the click event on our tab and send it to the parent
-  handeClick: function handeClick(i) {
+  handeClick(i) {
     if (this.props.clic) {
       this.props.clic(i);
     }
   },
-  render: function render() {
-    var _this = this;
 
-    var styles = this.styles(); // Gets the user styles for this element
-    var filler = this.state.menuFixed ? _react2.default.createElement('div', {
+  render() {
+    const styles = this.styles(); // Gets the user styles for this element
+    let filler = this.state.menuFixed ? React.createElement('div', {
       style: {
         height: styles.tabsStyle.height + styles.tabsStyle.paddingTop + styles.tabsStyle.marginTop
       }
     }) : null;
 
-    var elementWidth = 1 / this.props.elements.length * 100; // in percentage
+    let elementWidth = 1 / this.props.elements.length * 100; // in percentage
 
-    var bar = {
+    let bar = {
       marginLeft: elementWidth * this.props.selected + '%',
       width: elementWidth + '%'
     };
 
-    var styleMenu = {
+    let styleMenu = {
       top: this.state.menuFixed ? this.props.fixOffset : null,
       width: this.state.menuFixed ? this.props.widthB : null,
       position: this.state.menuFixed ? 'fixed' : null
     };
 
     // The different tabs
-    var elements = this.props.elements.map(function (element, i) {
-      var cssClass = _this.props.tabsClassName;
-      if (_this.props.selected === i) {
+    let elements = this.props.elements.map((element, i) => {
+      let cssClass = this.props.tabsClassName;
+      if (this.props.selected === i) {
         cssClass += ' is-selected';
       }
 
-      var style = {
+      let style = {
         width: elementWidth + '%'
       };
 
-      return _react2.default.createElement(
+      return React.createElement(
         'span',
         {
           className: cssClass,
           key: i,
-          onClick: _this.handeClick.bind(_this, i),
+          onClick: this.handeClick.bind(this, i),
           style: [defaultStyles.tabsStyle, styles.tabsStyle, style] },
         element
       );
     });
 
-    return _react2.default.createElement(
+    return React.createElement(
       'div',
       { ref: 'bar' },
-      _react2.default.createElement(
+      React.createElement(
         'div',
         null,
         filler
       ),
-      _react2.default.createElement(
+      React.createElement(
         'div',
         { style: styleMenu },
-        _react2.default.createElement(
+        React.createElement(
           'nav',
           { className: this.props.tabsBarClassName, style: [defaultStyles.tabsBarStyle, styles.tabsBarStyle] },
           elements
         ),
-        _react2.default.createElement('span', { style: [defaultStyles.lineStyle, styles.lineStyle, bar] })
+        React.createElement('span', { style: [defaultStyles.lineStyle, styles.lineStyle, bar] })
       )
     );
   }
