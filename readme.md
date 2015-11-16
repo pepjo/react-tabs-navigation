@@ -173,10 +173,10 @@ import Tabs from 'react-tabs-navigation'
 To do list
 ----------
 
-- [ ] Use travis
+- [x] Use travis
 - [ ] Write some tests
 - [ ] Optional animation when changing between tabs
-- [ ] Keyboard naviation
+- [ ] Keyboard navigation
 
 Contribute
 ------------
