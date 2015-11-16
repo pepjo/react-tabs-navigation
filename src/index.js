@@ -5,7 +5,7 @@ var React = require('react')
 var ReactDom = require('react-dom')
 
 var Tabs = require('./tabs.js')
-var {renderFunction} = require('./functions.js')
+var renderFunction = require('./functions.js').renderFunction
 
 module.exports = React.createClass({
   displayName: 'tabsNavigationMenu',
@@ -39,32 +39,32 @@ module.exports = React.createClass({
     tabsClassName: React.PropTypes.string,
     tabsStyle: React.PropTypes.object
   },
-  getDefaultProps () {
+  getDefaultProps: function () {
     return {
       fixOffset: 0,
       prev: 'Next',
       views: []
     }
   },
-  getInitialState () {
+  getInitialState: function () {
     return {
       selectedTab: this.props.selected || 0,
       width: 300
     }
   },
-  componentDidMount () {
+  componentDidMount: function () {
     window.addEventListener('resize', this.calculateWidth)
     this.calculateWidth()
   },
-  componentWillUnmount () {
+  componentWillUnmount: function () {
     window.removeEventListener('resize', this.calculateWidth)
   },
-  calculateWidth () {
+  calculateWidth: function () {
     this.setState({
       width: ReactDom.findDOMNode(this.refs.tabsContainer).clientWidth
     })
   },
-  handleTabChange (i) {
+  handleTabChange: function (i) {
     this.setState({
       selectedTab: i
     })
@@ -72,7 +72,7 @@ module.exports = React.createClass({
       this.props.onTabChange(i)
     }
   },
-  render () {
+  render: function () {
     return (
       <div>
         <div>

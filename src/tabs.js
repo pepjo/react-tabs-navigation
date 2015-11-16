@@ -6,8 +6,6 @@ var Radium = require('radium')
 var React = require('react')
 var ReactDom = require('react-dom')
 
-window.Color = Color
-
 const defaultColor = 'rgb(11, 104, 159)'
 const defaultStyles = {
   color: defaultColor,
@@ -60,7 +58,7 @@ module.exports = Radium(React.createClass({
     tabsStyle: React.PropTypes.object,
     widthB: React.PropTypes.number
   },
-  getDefaultProps () {
+  getDefaultProps: function () {
     return {
       clic: null,
       elements: ['tab1', 'tab2'],
@@ -70,21 +68,21 @@ module.exports = Radium(React.createClass({
       tabsClassName: ''
     }
   },
-  getInitialState () {
+  getInitialState: function () {
     return {
       menuFixed: false
     }
   },
-  componentDidMount () {
+  componentDidMount: function () {
     window.addEventListener('scroll', this.handleElementScroll)
   },
-  componentWillUnmount () {
+  componentWillUnmount: function () {
     window.removeEventListener('scroll', this.handleElementScroll)
   },
 
   // We should handle scroll events in order to detect when the bar should be
   // fixed
-  handleElementScroll () {
+  handleElementScroll: function () {
     let top = ReactDom.findDOMNode(this.refs.bar).offsetTop - this.props.fixOffset
     if (window.scrollY > top) {
       this.setState({
@@ -100,7 +98,7 @@ module.exports = Radium(React.createClass({
   // This modifies the styles defined by the user if a color is defined
   // But no color is defined inside the props styles
   // or if no height and paddingTop are defined
-  styles () {
+  styles: function () {
     let styles = {
       lineStyle: this.props.lineStyle || {},
       selectedTabStyle: this.props.selectedTabStyle || {},
@@ -137,13 +135,13 @@ module.exports = Radium(React.createClass({
   },
 
   // We handle the click event on our tab and send it to the parent
-  handeClick (i) {
+  handeClick: function (i) {
     if (this.props.clic) {
       this.props.clic(i)
     }
   },
 
-  render () {
+  render: function () {
     const styles = this.styles() // Gets the user styles for this element
     let filler = this.state.menuFixed
     ? <div
