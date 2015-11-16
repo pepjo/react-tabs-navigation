@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - '4.2.2'
+before_script:
+  - npm install -g gulp
+script:
+  - gulp lint
+
+
+notifications:
+  slack: interactivebcn:4pvhG2LJekisUI9Td2XYuDqD
+  email: false
+env:
+  global:
+    secure: rtGXseZNM9ATFZb3nyZUvVHUr/aJpDx+kF9pT12iImuKRLX4cHnKpoLP8ZPN/doPgrEgg63ppxquQulb3uFuP1C1YTFFC3xslingBRkkY6hk4knIbTRozxgAodnPYGuVsvinbwmYenj79U5l8aMpzuH7YLrDI0IQq9BAPV9fUIOj/UmRCSIDaFToyB/a+FeNRPjeHuEpWTv4PyTMsuVoiDHC9hLZFzCvfzfgvVQ7SLtAKnAInHNuJ8jBODjjUIfhdTt9esPAZ2KyZ8yFlmSEcCX6t8VjZZGMzNDAdFOqF4gzy2GtKbhtWVUTgpe8tS62weroNow6ZTsWC1Tra6/Zp5Yr+31RNE17yR8se0SWFbHLNhznPPw/1O43P88/hRgRbklk5+AmBl+ZsRhSIFt8dTeAi3DUNLPVKMAaXMnIpKjn+/kfiRa+/U17BJKShxtlhmXa/50J8NWTX7kjpGGtpvPCIP6yMk3vKwaPQQ7ftNW5UqjO3ejfxD6aAY5uiTnekKFCtkCw3ZNZkELaEteTjynCmWkmT07DMxuqvc+AsIOkHHA11s/fhZOJ2zZjnu8BS/sqJvqYRcvrIdsMwFsvG2R/YerauZbJ9OXqHkkev2wy5Tes+j0KD5zFq07mYDrhBHLIkO4Jub5pmp+hgnpMWKZMKfs3SARJe2ylWwzDPKg=
