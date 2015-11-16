@@ -1,1 +1,1 @@
-corrected styles
+changed import to require

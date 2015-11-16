@@ -1,13 +1,13 @@
 
 'use strict'
 
-import React from 'react'
-import ReactDom from 'react-dom'
+var React = require('react')
+var ReactDom = require('react-dom')
 
-import Tabs from './tabs.js'
-import {renderFunction} from './functions.js'
+var Tabs = require('./tabs.js')
+var {renderFunction} = require('./functions.js')
 
-export default React.createClass({
+module.exports = React.createClass({
   displayName: 'tabsNavigationMenu',
   propTypes: {
     banner: React.PropTypes.shape({ // Banner content (optional)

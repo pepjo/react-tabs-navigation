@@ -1,10 +1,10 @@
 
 'use strict';
 
-import Color from 'color';
-import Radium from 'radium';
-import React from 'react';
-import ReactDom from 'react-dom';
+var Color = require('color');
+var Radium = require('radium');
+var React = require('react');
+var ReactDom = require('react-dom');
 
 window.Color = Color;
 
@@ -44,7 +44,7 @@ const defaultStyles = {
   }
 };
 
-export default Radium(React.createClass({
+module.exports = Radium(React.createClass({
   displayName: 'tabsNavigationMenu__tabs',
   propTypes: {
     clic: React.PropTypes.func,
