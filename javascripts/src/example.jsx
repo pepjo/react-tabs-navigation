@@ -131,7 +131,7 @@ let component = (
         displayName: 'Scroll'
       }
     ]}
-    tabsBarStyle={{backgroundColor: 'rgb(160, 214, 249)'}}
+    tabsBarStyle={{backgroundColor: 'rgba(242, 250, 255, 0.95)'}}
   />
 )
 
