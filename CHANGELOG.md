@@ -1,1 +1,1 @@
-changed import to require
+corrected styles bugs

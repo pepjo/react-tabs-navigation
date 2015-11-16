@@ -15,9 +15,7 @@ const defaultStyles = {
     display: 'block',
     transition: 'margin-left 0.25s cubic-bezier(0.15, 0.48, 0.42, 1.13)'
   },
-  selectedTabStyle: {
-    backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
-  },
+  selectedTabStyle: {},
   tabsBarStyle: {
     height: '55px',
     backgroundColor: 'rgba(255, 255, 255, 0.96)',
@@ -31,11 +29,10 @@ const defaultStyles = {
     float: 'left',
     textAlign: 'center',
     cursor: 'pointer',
-    '-webkit-user-select': 'none',
-    '-moz-user-select': 'none',
-    '-ms-user-select': 'none',
+    WebkitUserSelect: 'none',
+    MozUserSelect: 'none',
+    msUserSelect: 'none',
     userSelect: 'none',
-    backgroundColor: 'rgb(255, 255, 255)',
     ':hover': {
       backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
     }
@@ -109,14 +106,10 @@ module.exports = Radium(React.createClass({
       if (!styles.lineStyle.color) {
         styles.lineStyle.color = this.props.color;
       }
+    }
 
-      if (!styles.selectedTabStyle.backgroundColor) {
-        styles.selectedTabStyle.backgroundColor = Color(this.props.color).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString();
-      }
-
-      if (!styles.tabsStyle[':hover']) {
-        styles.tabsStyle[':hover'] = styles.selectedTabStyle[':hover'];
-      }
+    if (!styles.tabsStyle[':hover']) {
+      styles.tabsStyle[':hover'] = styles.selectedTabStyle;
     }
 
     if (!styles.tabsStyle.height) {
@@ -164,14 +157,19 @@ module.exports = Radium(React.createClass({
 
     // The different tabs
     let elements = this.props.elements.map((element, i) => {
-      let cssClass = this.props.tabsClassName;
-      if (this.props.selected === i) {
-        cssClass += ' is-selected';
-      }
-
       let style = {
         width: elementWidth + '%'
       };
+
+      let tabStyles = [defaultStyles.tabsStyle, styles.tabsStyle];
+
+      let cssClass = this.props.tabsClassName;
+      if (this.props.selected === i) {
+        cssClass += ' is-selected';
+        tabStyles.push(styles.selectedTabStyle);
+      }
+
+      tabStyles.push(style);
 
       return React.createElement(
         'span',
@@ -179,7 +177,7 @@ module.exports = Radium(React.createClass({
           className: cssClass,
           key: i,
           onClick: this.handeClick.bind(this, i),
-          style: [defaultStyles.tabsStyle, styles.tabsStyle, style] },
+          style: tabStyles },
         element
       );
     });
