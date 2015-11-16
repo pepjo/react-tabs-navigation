@@ -17,7 +17,7 @@ var gutil = require('gulp-util')
 var chalk = require('chalk')
 
 var babelifyOptions = {
-  presets: ['es2015', 'react']
+  presets: ['react']
 }
 
 function map_error (err) {
@@ -59,13 +59,6 @@ function bundle_js (bundler) {
   return bundler.bundle()
     .on('error', map_error)
     .pipe(source('example.js'))
-    .pipe(buffer())
-    .pipe(gulp.dest('javascripts/out'))
-    .pipe(rename('example.min.js'))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-      // capture sourcemaps from transforms
-      .pipe(uglify())
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('javascripts/out'))
 }
 
@@ -74,17 +67,4 @@ gulp.task('browserify', function () {
   var bundler = browserify('./javascripts/src/example.jsx', { debug: true }).transform(babelify, babelifyOptions)
 
   return bundle_js(bundler)
-})
-
-// Without sourcemaps
-gulp.task('browserify-production', function () {
-  var bundler = browserify('./javascripts/src/example.jsx').transform(babelify, babelifyOptions)
-
-  return bundler.bundle()
-    .on('error', map_error)
-    .pipe(source('example.js'))
-    .pipe(buffer())
-    .pipe(rename('example.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('javascripts/out'))
 })

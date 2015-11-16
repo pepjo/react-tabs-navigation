@@ -1,9 +1,9 @@
 
 'use strict'
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Tabs from 'react-tabs-navigation'
+var React = require('react')
+var ReactDOM = require('react-dom')
+var Tabs = require('react-tabs-navigation')
 
 let component = (
   <Tabs
