@@ -4,8 +4,8 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
-import Tabs from './dependencies/tabs.jsx'
-import {renderFunction} from './dependencies/functions.js'
+import Tabs from './tabs.jsx'
+import {renderFunction} from './functions.js'
 
 export default React.createClass({
   displayName: 'tabsNavigationMenu',
