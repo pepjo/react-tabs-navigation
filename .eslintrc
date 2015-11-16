@@ -31,11 +31,6 @@
     "jsx": true,
     "modules": true
   },
-  "globals": {
-    "$": true,
-    "classNames": true,
-    "_": true
-  },
   "plugins": [
     "react",
     "standard"

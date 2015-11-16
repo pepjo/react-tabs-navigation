@@ -1,5 +1,7 @@
-react-tabs-navigation
+react-tabs-navigation [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 =====================
+
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 Note: As of now babel is required because es6 and jsx are used.
 

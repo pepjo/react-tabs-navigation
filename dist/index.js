@@ -13,7 +13,7 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _tabs = require('./tabs.jsx');
+var _tabs = require('./tabs.js');
 
 var _tabs2 = _interopRequireDefault(_tabs);
 

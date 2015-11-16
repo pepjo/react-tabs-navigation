@@ -1,6 +1,6 @@
 {
   "name": "react-tabs-navigation",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "react-tabs-navigation is a nice react component that enables navigation through tabs in your web app.",
   "main": "/dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/pepjo/react-tabs-navigation.git"
   },
-  "peerDependenices": {
+  "peerDependencies": {
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   },

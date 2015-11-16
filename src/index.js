@@ -4,7 +4,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
-import Tabs from './tabs.jsx'
+import Tabs from './tabs.js'
 import {renderFunction} from './functions.js'
 
 export default React.createClass({
