@@ -1,9 +1,8 @@
-react-tabs-navigation [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+react-tabs-navigation
 =====================
+[![Build Status](https://travis-ci.org/pepjo/react-tabs-navigation.svg)](https://travis-ci.org/pepjo/react-tabs-navigation) [![Code Climate](https://codeclimate.com/github/pepjo/react-tabs-navigation/badges/gpa.svg)](https://codeclimate.com/github/pepjo/react-tabs-navigation) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-Note: As of now babel is required because es6 and jsx are used.
 
 This react component enables navigating through tabs in your web app.
 It is composed of three different parts:
@@ -28,6 +27,11 @@ Installing
 ```bash
 $ npm install react-tabs-navigation
 ```
+
+Live demo
+---------
+
+Here: http://
 
 Props
 -----
