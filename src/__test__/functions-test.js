@@ -1,8 +1,26 @@
-// __tests__/functions.js
+
+'use strict'
 
 var chai = require('chai')
 
 var expect = chai.expect
+
+describe('renderFunction', function () {
+  it('recives a function and returns its execution', function () {
+    var renderFunction = require('../functions').renderFunction
+    expect(renderFunction(function () {
+      return 'hey there'
+    })).to.equal('hey there')
+  })
+  it('recives a number and returns it', function () {
+    var renderFunction = require('../functions').renderFunction
+    expect(renderFunction(10)).to.equal(10)
+  })
+  it('recives a string and returns it', function () {
+    var renderFunction = require('../functions').renderFunction
+    expect(renderFunction('hey there')).to.equal('hey there')
+  })
+})
 
 describe('isFunction', function () {
   it('recives a function and returns true', function () {

@@ -30,9 +30,10 @@
     "gulp-eslint": "^1.0.0",
     "jsdom": "^7.0.2",
     "mocha": "^2.3.4",
-    "react-addons-test-utils": "~0.14.0",
+    "react-addons-test-utils": "^0.14.2",
     "react-tools": "^0.13.3",
     "require-dir": "^0.3.0",
+    "skin-deep": "^0.13.0",
     "vinyl-source-stream": "~1.1.0"
   },
   "keywords": [
