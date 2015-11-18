@@ -192,7 +192,7 @@ We are following [Gitflow](http://nvie.com/posts/a-successful-git-branching-mode
 * Make commits of logical units
 * Don't forget about tests! :)
 * Stick to code standards
-* Don't forget to build `$ babel --presets react src --watch --out-dir dist` !!
+* Don't forget to build `$ npm run build` !!
 
 
 
