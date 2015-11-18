@@ -1,4 +1,5 @@
 /*.log
 /src
+/tests
 /.babelrc
 /.eslintrc
