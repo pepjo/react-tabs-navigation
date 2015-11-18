@@ -10,7 +10,7 @@ var expect = chai.expect
 var React = require('react')
 var Tabs = require('../index')
 
-describe('Function: display content tab when rendered for the first time', function () {
+describe('Function: display the tab\'s content when the component is loaded', function () {
   context('Scenario: success', function () {
     describe('When we select the first tab on props', function () {
       let tabs
@@ -28,7 +28,7 @@ describe('Function: display content tab when rendered for the first time', funct
         )
       })
 
-      it('Should display the first tab content', function () {
+      it('the first tab\'s content should be displayed', function () {
         const component = tabs.getRenderOutput()
         expect(component.props.children[2].props.children).to.equal('Hello')
       })
@@ -55,7 +55,7 @@ describe('Function: display content tab when rendered for the first time', funct
         )
       })
 
-      it('Should display the second tab content', function () {
+      it('the second tab\'s content should be displayed', function () {
         let component = tabs.getRenderOutput()
         expect(component.props.children[2].props.children).to.equal('content2')
       })
@@ -88,11 +88,11 @@ describe('Function: change active tab when tab clicked', function () {
         component.props.children[1].props.children.props.clic(1)
       })
 
-      it('The content will be the seconds tabs content', function () {
+      it('the content should be the second tab\'s content', function () {
         expect(component.props.children[2].props.children).to.equal('content2')
       })
 
-      it('The highlighted tab should be the second one', function () {
+      it('the highlighted tab should be the second one', function () {
         expect(component.props.children[1].props.children.props.selected).to.equal(1)
       })
     })
