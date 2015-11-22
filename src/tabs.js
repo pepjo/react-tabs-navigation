@@ -155,7 +155,7 @@ module.exports = Radium(React.createClass({
       top: this.state.menuFixed ? this.props.fixOffset : null,
       width: this.state.menuFixed ? this.props.widthB : null,
       position: this.state.menuFixed ? 'fixed' : null,
-      zIndex: this.props.tabsBarStyle ? this.props.tabsBarStyle.zIndez : null
+      zIndex: this.props.tabsBarStyle ? this.props.tabsBarStyle.zIndex : null
     }
 
     // The different tabs
