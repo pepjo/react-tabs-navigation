@@ -67,7 +67,7 @@ module.exports = React.createClass({
   render: function render() {
     return React.createElement(
       'div',
-      null,
+      { role: 'application' },
       React.createElement(
         'div',
         null,
@@ -75,8 +75,7 @@ module.exports = React.createClass({
       ),
       React.createElement(
         'div',
-        {
-          ref: 'tabsContainer' },
+        { ref: 'tabsContainer' },
         React.createElement(Tabs, {
           clic: this.handleTabChange,
           color: this.props.color,
@@ -84,6 +83,7 @@ module.exports = React.createClass({
             return item.displayName;
           }),
           fixOffset: this.props.fixOffset,
+          handleTabChange: this.handleTabChange,
           lineStyle: this.state.lineStyle,
           selected: this.state.selectedTab,
           selectedTabStyle: this.props.selectedTabStyle,

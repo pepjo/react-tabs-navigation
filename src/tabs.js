@@ -6,6 +6,8 @@ var Radium = require('radium')
 var React = require('react')
 var ReactDom = require('react-dom')
 
+var tabKeyMixin = require('./tabsKeyboardNavigationMixin.js')
+
 const defaultColor = 'rgb(11, 104, 159)'
 const defaultStyles = {
   color: defaultColor,
@@ -16,7 +18,8 @@ const defaultStyles = {
     transition: 'margin-left 0.25s cubic-bezier(0.15, 0.48, 0.42, 1.13)'
   },
   selectedTabStyle: {
-    backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
+    backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString(),
+    outline: 'none'
   },
   tabsBarStyle: {
     height: '55px',
@@ -35,8 +38,8 @@ const defaultStyles = {
     MozUserSelect: 'none',
     msUserSelect: 'none',
     userSelect: 'none',
-    ':hover': {
-      backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
+    ':focus': {
+      boxShadow: 'inset 0 0 8px rgba(11, 104, 159, 0.3)'
     }
   }
 }
@@ -57,6 +60,7 @@ module.exports = Radium(React.createClass({
     tabsStyle: React.PropTypes.object,
     widthB: React.PropTypes.number
   },
+  mixins: [tabKeyMixin],
   getDefaultProps: function () {
     return {
       clic: null,
@@ -69,7 +73,9 @@ module.exports = Radium(React.createClass({
   },
   getInitialState: function () {
     return {
-      menuFixed: false
+      menuFixed: false,
+      focused: 0,
+      focusedItem: this.props.selected
     }
   },
   componentDidMount: function () {
@@ -100,7 +106,7 @@ module.exports = Radium(React.createClass({
   styles: function () {
     let styles = {
       lineStyle: this.props.lineStyle || {},
-      selectedTabStyle: this.props.selectedTabStyle || {},
+      selectedTabStyle: this.props.selectedTabStyle || defaultStyles.selectedTabStyle,
       tabsStyle: this.props.tabsStyle || {},
       tabsBarStyle: this.props.tabsBarStyle || {}
     }
@@ -114,16 +120,8 @@ module.exports = Radium(React.createClass({
       styles.tabsStyle[':hover'] = styles.selectedTabStyle
     }
 
-    if (!styles.tabsStyle.height) {
-      styles.tabsStyle.height = defaultStyles.tabsStyle.height
-    }
-
-    if (!styles.tabsStyle.paddingTop) {
-      styles.tabsStyle.paddingTop = defaultStyles.tabsStyle.paddingTop
-    }
-
-    if (!styles.tabsStyle.marginTop) {
-      styles.tabsStyle.marginTop = defaultStyles.tabsStyle.marginTop
+    if (!styles.tabsStyle[':focus']) {
+      styles.tabsStyle[':focus'] = styles.selectedTabStyle
     }
 
     if (!styles.selectedTabStyle.backgroundColor) {
@@ -175,6 +173,7 @@ module.exports = Radium(React.createClass({
       let cssClass = this.props.tabsClassName
       if (this.props.selected === i) {
         cssClass += ' is-selected'
+        tabStyles.push(defaultStyles.selectedTabStyle)
         tabStyles.push(styles.selectedTabStyle)
       }
 
@@ -182,10 +181,17 @@ module.exports = Radium(React.createClass({
 
       return (
         <span
+          aria-expanded={this.props.selected === i}
+          aria-selected="false"
           className={cssClass}
           key={i}
+          onBlur={this.handleBlur.bind(this, i)}
           onClick={this.handeClick.bind(this, i)}
-          style={tabStyles}>
+          onFocus={this.handleFocus.bind(this, i)}
+          ref={'tab-' + i}
+          role="tab"
+          style={tabStyles}
+          tabIndex={this.props.selected === i ? 0 : -1}>
           {element}
         </span>
       )
@@ -197,7 +203,11 @@ module.exports = Radium(React.createClass({
           {filler}
         </div>
         <div style={styleMenu}>
-          <nav className={this.props.tabsBarClassName} style={[defaultStyles.tabsBarStyle, styles.tabsBarStyle]}>
+          <nav
+            className={this.props.tabsBarClassName}
+            multiselectable="false"
+            role="tablist"
+            style={[defaultStyles.tabsBarStyle, styles.tabsBarStyle]}>
             {elements}
           </nav>
           <span style={[defaultStyles.lineStyle, styles.lineStyle, bar]}/>

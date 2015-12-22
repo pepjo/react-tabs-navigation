@@ -6,6 +6,8 @@ var Radium = require('radium');
 var React = require('react');
 var ReactDom = require('react-dom');
 
+var tabKeyMixin = require('./tabsKeyboardNavigationMixin.js');
+
 var defaultColor = 'rgb(11, 104, 159)';
 var defaultStyles = {
   color: defaultColor,
@@ -16,7 +18,8 @@ var defaultStyles = {
     transition: 'margin-left 0.25s cubic-bezier(0.15, 0.48, 0.42, 1.13)'
   },
   selectedTabStyle: {
-    backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
+    backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString(),
+    outline: 'none'
   },
   tabsBarStyle: {
     height: '55px',
@@ -35,8 +38,8 @@ var defaultStyles = {
     MozUserSelect: 'none',
     msUserSelect: 'none',
     userSelect: 'none',
-    ':hover': {
-      backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
+    ':focus': {
+      boxShadow: 'inset 0 0 8px rgba(11, 104, 159, 0.3)'
     }
   }
 };
@@ -57,6 +60,7 @@ module.exports = Radium(React.createClass({
     tabsStyle: React.PropTypes.object,
     widthB: React.PropTypes.number
   },
+  mixins: [tabKeyMixin],
   getDefaultProps: function getDefaultProps() {
     return {
       clic: null,
@@ -69,7 +73,9 @@ module.exports = Radium(React.createClass({
   },
   getInitialState: function getInitialState() {
     return {
-      menuFixed: false
+      menuFixed: false,
+      focused: 0,
+      focusedItem: this.props.selected
     };
   },
   componentDidMount: function componentDidMount() {
@@ -100,7 +106,7 @@ module.exports = Radium(React.createClass({
   styles: function styles() {
     var styles = {
       lineStyle: this.props.lineStyle || {},
-      selectedTabStyle: this.props.selectedTabStyle || {},
+      selectedTabStyle: this.props.selectedTabStyle || defaultStyles.selectedTabStyle,
       tabsStyle: this.props.tabsStyle || {},
       tabsBarStyle: this.props.tabsBarStyle || {}
     };
@@ -114,16 +120,8 @@ module.exports = Radium(React.createClass({
       styles.tabsStyle[':hover'] = styles.selectedTabStyle;
     }
 
-    if (!styles.tabsStyle.height) {
-      styles.tabsStyle.height = defaultStyles.tabsStyle.height;
-    }
-
-    if (!styles.tabsStyle.paddingTop) {
-      styles.tabsStyle.paddingTop = defaultStyles.tabsStyle.paddingTop;
-    }
-
-    if (!styles.tabsStyle.marginTop) {
-      styles.tabsStyle.marginTop = defaultStyles.tabsStyle.marginTop;
+    if (!styles.tabsStyle[':focus']) {
+      styles.tabsStyle[':focus'] = styles.selectedTabStyle;
     }
 
     if (!styles.selectedTabStyle.backgroundColor) {
@@ -175,6 +173,7 @@ module.exports = Radium(React.createClass({
       var cssClass = _this.props.tabsClassName;
       if (_this.props.selected === i) {
         cssClass += ' is-selected';
+        tabStyles.push(defaultStyles.selectedTabStyle);
         tabStyles.push(styles.selectedTabStyle);
       }
 
@@ -183,10 +182,17 @@ module.exports = Radium(React.createClass({
       return React.createElement(
         'span',
         {
+          'aria-expanded': _this.props.selected === i,
+          'aria-selected': 'false',
           className: cssClass,
           key: i,
+          onBlur: _this.handleBlur.bind(_this, i),
           onClick: _this.handeClick.bind(_this, i),
-          style: tabStyles },
+          onFocus: _this.handleFocus.bind(_this, i),
+          ref: 'tab-' + i,
+          role: 'tab',
+          style: tabStyles,
+          tabIndex: _this.props.selected === i ? 0 : -1 },
         element
       );
     });
@@ -204,7 +210,11 @@ module.exports = Radium(React.createClass({
         { style: styleMenu },
         React.createElement(
           'nav',
-          { className: this.props.tabsBarClassName, style: [defaultStyles.tabsBarStyle, styles.tabsBarStyle] },
+          {
+            className: this.props.tabsBarClassName,
+            multiselectable: 'false',
+            role: 'tablist',
+            style: [defaultStyles.tabsBarStyle, styles.tabsBarStyle] },
           elements
         ),
         React.createElement('span', { style: [defaultStyles.lineStyle, styles.lineStyle, bar] })

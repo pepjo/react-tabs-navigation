@@ -74,13 +74,12 @@ module.exports = React.createClass({
   },
   render: function () {
     return (
-      <div>
+      <div role="application">
         <div>
           {renderFunction(this.props.banner &&
             this.props.banner.children)}
         </div>
-        <div
-          ref='tabsContainer'>
+        <div ref='tabsContainer'>
           <Tabs
             clic={this.handleTabChange}
             color={this.props.color}
@@ -88,6 +87,7 @@ module.exports = React.createClass({
               return item.displayName
             })}
             fixOffset={this.props.fixOffset}
+            handleTabChange={this.handleTabChange}
             lineStyle={this.state.lineStyle}
             selected={this.state.selectedTab}
             selectedTabStyle={this.props.selectedTabStyle}

@@ -175,7 +175,7 @@ To do list
 
 - [x] Use travis
 - [x] Write some tests
-- [ ] Optional animation when changing between tabs
+- [x] Optional animation when changing between tabs
 - [ ] Keyboard navigation
 
 Contribute
