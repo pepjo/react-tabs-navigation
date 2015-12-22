@@ -6,8 +6,8 @@ var Radium = require('radium');
 var React = require('react');
 var ReactDom = require('react-dom');
 
-const defaultColor = 'rgb(11, 104, 159)';
-const defaultStyles = {
+var defaultColor = 'rgb(11, 104, 159)';
+var defaultStyles = {
   color: defaultColor,
   lineStyle: {
     backgroundColor: defaultColor,
@@ -55,7 +55,7 @@ module.exports = Radium(React.createClass({
     tabsStyle: React.PropTypes.object,
     widthB: React.PropTypes.number
   },
-  getDefaultProps: function () {
+  getDefaultProps: function getDefaultProps() {
     return {
       clic: null,
       elements: ['tab1', 'tab2'],
@@ -65,22 +65,22 @@ module.exports = Radium(React.createClass({
       tabsClassName: ''
     };
   },
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       menuFixed: false
     };
   },
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     window.addEventListener('scroll', this.handleElementScroll);
   },
-  componentWillUnmount: function () {
+  componentWillUnmount: function componentWillUnmount() {
     window.removeEventListener('scroll', this.handleElementScroll);
   },
 
   // We should handle scroll events in order to detect when the bar should be
   // fixed
-  handleElementScroll: function () {
-    let top = ReactDom.findDOMNode(this.refs.bar).offsetTop - this.props.fixOffset;
+  handleElementScroll: function handleElementScroll() {
+    var top = ReactDom.findDOMNode(this.refs.bar).offsetTop - this.props.fixOffset;
     if (window.scrollY > top) {
       this.setState({
         menuFixed: true
@@ -95,8 +95,8 @@ module.exports = Radium(React.createClass({
   // This modifies the styles defined by the user if a color is defined
   // But no color is defined inside the props styles
   // or if no height and paddingTop are defined
-  styles: function () {
-    let styles = {
+  styles: function styles() {
+    var styles = {
       lineStyle: this.props.lineStyle || {},
       selectedTabStyle: this.props.selectedTabStyle || {},
       tabsStyle: this.props.tabsStyle || {},
@@ -128,28 +128,30 @@ module.exports = Radium(React.createClass({
   },
 
   // We handle the click event on our tab and send it to the parent
-  handeClick: function (i) {
+  handeClick: function handeClick(i) {
     if (this.props.clic) {
       this.props.clic(i);
     }
   },
 
-  render: function () {
-    const styles = this.styles(); // Gets the user styles for this element
-    let filler = this.state.menuFixed ? React.createElement('div', {
+  render: function render() {
+    var _this = this;
+
+    var styles = this.styles(); // Gets the user styles for this element
+    var filler = this.state.menuFixed ? React.createElement('div', {
       style: {
         height: styles.tabsStyle.height + styles.tabsStyle.paddingTop + styles.tabsStyle.marginTop
       }
     }) : null;
 
-    let elementWidth = 1 / this.props.elements.length * 100; // in percentage
+    var elementWidth = 1 / this.props.elements.length * 100; // in percentage
 
-    let bar = {
+    var bar = {
       marginLeft: elementWidth * this.props.selected + '%',
       width: elementWidth + '%'
     };
 
-    let styleMenu = {
+    var styleMenu = {
       top: this.state.menuFixed ? this.props.fixOffset : null,
       width: this.state.menuFixed ? this.props.widthB : null,
       position: this.state.menuFixed ? 'fixed' : null,
@@ -157,15 +159,15 @@ module.exports = Radium(React.createClass({
     };
 
     // The different tabs
-    let elements = this.props.elements.map((element, i) => {
-      let style = {
+    var elements = this.props.elements.map(function (element, i) {
+      var style = {
         width: elementWidth + '%'
       };
 
-      let tabStyles = [defaultStyles.tabsStyle, styles.tabsStyle];
+      var tabStyles = [defaultStyles.tabsStyle, styles.tabsStyle];
 
-      let cssClass = this.props.tabsClassName;
-      if (this.props.selected === i) {
+      var cssClass = _this.props.tabsClassName;
+      if (_this.props.selected === i) {
         cssClass += ' is-selected';
         tabStyles.push(styles.selectedTabStyle);
       }
@@ -177,7 +179,7 @@ module.exports = Radium(React.createClass({
         {
           className: cssClass,
           key: i,
-          onClick: this.handeClick.bind(this, i),
+          onClick: _this.handeClick.bind(_this, i),
           style: tabStyles },
         element
       );

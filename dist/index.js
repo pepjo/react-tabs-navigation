@@ -31,32 +31,32 @@ module.exports = React.createClass({
     tabsClassName: React.PropTypes.string,
     tabsStyle: React.PropTypes.object
   },
-  getDefaultProps: function () {
+  getDefaultProps: function getDefaultProps() {
     return {
       fixOffset: 0,
       prev: 'Next',
       views: []
     };
   },
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       selectedTab: this.props.selected || 0,
       width: 300
     };
   },
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     window.addEventListener('resize', this.calculateWidth);
     this.calculateWidth();
   },
-  componentWillUnmount: function () {
+  componentWillUnmount: function componentWillUnmount() {
     window.removeEventListener('resize', this.calculateWidth);
   },
-  calculateWidth: function () {
+  calculateWidth: function calculateWidth() {
     this.setState({
       width: ReactDom.findDOMNode(this.refs.tabsContainer).clientWidth
     });
   },
-  handleTabChange: function (i) {
+  handleTabChange: function handleTabChange(i) {
     this.setState({
       selectedTab: i
     });
@@ -64,7 +64,7 @@ module.exports = React.createClass({
       this.props.onTabChange(i);
     }
   },
-  render: function () {
+  render: function render() {
     return React.createElement(
       'div',
       null,
@@ -80,7 +80,7 @@ module.exports = React.createClass({
         React.createElement(Tabs, {
           clic: this.handleTabChange,
           color: this.props.color,
-          elements: this.props.tabs.map(item => {
+          elements: this.props.tabs.map(function (item) {
             return item.displayName;
           }),
           fixOffset: this.props.fixOffset,

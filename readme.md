@@ -192,7 +192,7 @@ We are following [Gitflow](http://nvie.com/posts/a-successful-git-branching-mode
 * Make commits of logical units
 * Don't forget about tests! :)
 * Stick to code standards
-* Don't forget to build `$ npm run build` !!
+* Don't forget to build `$ npm run build` !! (you must have `npm install -g babel-cli` installed globally)
 
 
 
