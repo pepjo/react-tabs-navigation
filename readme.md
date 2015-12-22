@@ -194,7 +194,9 @@ We are following [Gitflow](http://nvie.com/posts/a-successful-git-branching-mode
 * Stick to code standards
 * Don't forget to build `$ npm run build` !! (you must have `npm install -g babel-cli` installed globally)
 
+#### Improving the example
 
+In order to build the example source code you can use `gulp example-watchify` or `gulp example-browserify` depending on the desired behaviour.
 
 ### Submiting Changes
 
