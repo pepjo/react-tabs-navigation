@@ -15,7 +15,9 @@ var defaultStyles = {
     display: 'block',
     transition: 'margin-left 0.25s cubic-bezier(0.15, 0.48, 0.42, 1.13)'
   },
-  selectedTabStyle: {},
+  selectedTabStyle: {
+    backgroundColor: Color(defaultColor).lighten(0.4).whiten(3.5).alpha(0.1).rgbaString()
+  },
   tabsBarStyle: {
     height: '55px',
     backgroundColor: 'rgba(255, 255, 255, 0.96)',
@@ -122,6 +124,10 @@ module.exports = Radium(React.createClass({
 
     if (!styles.tabsStyle.marginTop) {
       styles.tabsStyle.marginTop = defaultStyles.tabsStyle.marginTop;
+    }
+
+    if (!styles.selectedTabStyle.backgroundColor) {
+      styles.selectedTabStyle.backgroundColor = defaultStyles.selectedTabStyle.backgroundColor;
     }
 
     return styles;

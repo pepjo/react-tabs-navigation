@@ -54,7 +54,7 @@ function bundle_js (bundler) {
   return bundler.bundle()
     .on('error', map_error)
     .pipe(source('example.js'))
-    .pipe(gulp.dest('javascripts/out'))
+    .pipe(gulp.dest('example/javascripts/out'))
 }
 
 // Without watchify
