@@ -70,6 +70,14 @@ let component = (
             <div>
               Use tab to select the tabs and arrows (or home and end) to move arround
             </div>
+            <div>
+              <button onClick={() => {
+                console.log(mountedComponent)
+                mountedComponent.changeSelectedTab(0)
+              }}>
+                Go to the first tab
+              </button>
+            </div>
             <br></br>
             <ul>
               <li>This</li>
@@ -144,4 +152,4 @@ let component = (
 
 let mountNode = document.getElementById('react-container')
 
-ReactDOM.render(component, mountNode)
+let mountedComponent = ReactDOM.render(component, mountNode)

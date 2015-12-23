@@ -104,6 +104,11 @@ This component accept the following props:
   The style of the tab.
   (Accepts Radium properties like `:hover`)
 
+Public Methods
+--------------
+
+* `changeSelectedTab(indexTab)` to change the selected tab
+
 Simple example
 --------------
 

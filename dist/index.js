@@ -48,8 +48,17 @@ module.exports = React.createClass({
     window.addEventListener('resize', this.calculateWidth);
     this.calculateWidth();
   },
+  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+    if (nextProps.selected === this.props.selected) {
+      this.handleTabChange(nextProps.selected);
+    }
+  },
   componentWillUnmount: function componentWillUnmount() {
     window.removeEventListener('resize', this.calculateWidth);
+  },
+  // Public method
+  changeSelectedTab: function changeSelectedTab(i) {
+    this.handleTabChange(i);
   },
   calculateWidth: function calculateWidth() {
     this.setState({
