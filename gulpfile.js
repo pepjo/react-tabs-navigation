@@ -40,8 +40,6 @@ function map_error (err) {
       ': ' +
       chalk.yellow(err.message))
   }
-
-  this.end()
 }
 /* */
 

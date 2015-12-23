@@ -3,7 +3,7 @@
 
 var React = require('react')
 var ReactDOM = require('react-dom')
-var Tabs = require('../../../dist/index.js')
+var Tabs = require('react-tabs-navigation')
 
 let component = (
   <Tabs
