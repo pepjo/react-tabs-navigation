@@ -3,7 +3,7 @@
 
 var React = require('react')
 var ReactDOM = require('react-dom')
-var Tabs = require('react-tabs-navigation')
+var Tabs = require('../../../dist/index.js')
 
 let component = (
   <Tabs
@@ -13,7 +13,7 @@ let component = (
     tabs={[
       {
         // Fist tab
-        children: () => (
+        children: () => ( // eslint-disable-line
           <div>
             <h2>Documentation and examples</h2>
             <p>See github:
@@ -27,7 +27,7 @@ let component = (
       },
       {
         // Second tab
-        children: () => (
+        children: () => ( // eslint-disable-line
           <div>
             <h2>
               <a
@@ -64,69 +64,84 @@ let component = (
       },
       {
         // Third tab
-        children: () => (
-          <ul>
-            <li>This</li>
-            <li>is</li>
-            <li>super</li>
-            <li>large</li>
-            <li>so</li>
-            <li>you</li>
-            <li>can</li>
-            <li>scroll</li>
-            <li>down</li>
-            <li>.</li>
-            <li>This</li>
-            <li>is</li>
-            <li>super</li>
-            <li>large</li>
-            <li>so</li>
-            <li>you</li>
-            <li>can</li>
-            <li>scroll</li>
-            <li>down</li>
-            <li>.</li>
-            <li>This</li>
-            <li>is</li>
-            <li>super</li>
-            <li>large</li>
-            <li>so</li>
-            <li>you</li>
-            <li>can</li>
-            <li>scroll</li>
-            <li>down</li>
-            <li>.</li>
-            <li>This</li>
-            <li>is</li>
-            <li>super</li>
-            <li>large</li>
-            <li>so</li>
-            <li>you</li>
-            <li>can</li>
-            <li>scroll</li>
-            <li>down</li>
-            <li>.</li>
-            <li>This</li>
-            <li>is</li>
-            <li>super</li>
-            <li>large</li>
-            <li>so</li>
-            <li>you</li>
-            <li>can</li>
-            <li>scroll</li>
-            <li>down</li>
-            <li>.</li>
-            <li>This</li>
-            <li>is</li>
-            <li>super</li>
-            <li>large</li>
-            <li>so</li>
-            <li>you</li>
-            <li>can</li>
-            <li>scroll</li>
-            <li>down</li>
-            <li>.</li>
-          </ul>
+        children: () => ( // eslint-disable-line
+          <div>
+            <br></br>
+            <div>
+              Use tab to select the tabs and arrows (or home and end) to move arround
+            </div>
+            <div>
+              <button onClick={() => {
+                console.log(mountedComponent)
+                mountedComponent.changeSelectedTab(0)
+              }}>
+                Go to the first tab
+              </button>
+            </div>
+            <br></br>
+            <ul>
+              <li>This</li>
+              <li>is</li>
+              <li>super</li>
+              <li>large</li>
+              <li>so</li>
+              <li>you</li>
+              <li>can</li>
+              <li>scroll</li>
+              <li>down</li>
+              <li>.</li>
+              <li>This</li>
+              <li>is</li>
+              <li>super</li>
+              <li>large</li>
+              <li>so</li>
+              <li>you</li>
+              <li>can</li>
+              <li>scroll</li>
+              <li>down</li>
+              <li>.</li>
+              <li>This</li>
+              <li>is</li>
+              <li>super</li>
+              <li>large</li>
+              <li>so</li>
+              <li>you</li>
+              <li>can</li>
+              <li>scroll</li>
+              <li>down</li>
+              <li>.</li>
+              <li>This</li>
+              <li>is</li>
+              <li>super</li>
+              <li>large</li>
+              <li>so</li>
+              <li>you</li>
+              <li>can</li>
+              <li>scroll</li>
+              <li>down</li>
+              <li>.</li>
+              <li>This</li>
+              <li>is</li>
+              <li>super</li>
+              <li>large</li>
+              <li>so</li>
+              <li>you</li>
+              <li>can</li>
+              <li>scroll</li>
+              <li>down</li>
+              <li>.</li>
+              <li>This</li>
+              <li>is</li>
+              <li>super</li>
+              <li>large</li>
+              <li>so</li>
+              <li>you</li>
+              <li>can</li>
+              <li>scroll</li>
+              <li>down</li>
+              <li>.</li>
+            </ul>
+          </div>
         ),
         displayName: 'Scroll'
       }
@@ -137,4 +152,4 @@ let component = (
 
 let mountNode = document.getElementById('react-container')
 
-ReactDOM.render(component, mountNode)
+let mountedComponent = ReactDOM.render(component, mountNode)
