@@ -105,7 +105,7 @@ module.exports = React.createClass({
       ),
       React.createElement(
         'div',
-        null,
+        { role: 'tabpanel' },
         renderFunction(this.props.tabs[this.state.selectedTab] && this.props.tabs[this.state.selectedTab].children)
       )
     );

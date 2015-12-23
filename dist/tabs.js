@@ -182,8 +182,8 @@ module.exports = Radium(React.createClass({
       return React.createElement(
         'span',
         {
-          'aria-expanded': _this.props.selected === i,
-          'aria-selected': 'false',
+          'aria-expanded': _this.state.focusedItem === i,
+          'aria-selected': _this.state.focused > 0 ? _this.props.selected === i : false,
           className: cssClass,
           key: i,
           onBlur: _this.handleBlur.bind(_this, i),

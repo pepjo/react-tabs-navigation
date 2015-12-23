@@ -107,7 +107,7 @@ module.exports = React.createClass({
             widthB={this.state.width}
           />
         </div>
-        <div>
+        <div role="tabpanel">
           {renderFunction(this.props.tabs[this.state.selectedTab] &&
             this.props.tabs[this.state.selectedTab].children)}
         </div>
