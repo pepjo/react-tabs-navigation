@@ -22,9 +22,9 @@ const defaultStyles = {
     outline: 'none'
   },
   tabsBarStyle: {
-    height: '55px',
+    height: 55,
     backgroundColor: 'rgba(255, 255, 255, 0.96)',
-    fontSize: '18px'
+    fontSize: 18
   },
   tabsStyle: {
     height: 40,
