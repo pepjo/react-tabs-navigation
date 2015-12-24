@@ -2,6 +2,8 @@ module.exports = {
   paths: [
     './**/*.js',
     './**/*.jsx',
-    '!./dist/**'
+    '!./dist/**',
+    '!./example/**',
+    '!./node_modules/**'
   ]
 }
