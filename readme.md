@@ -180,8 +180,9 @@ To do list
 
 - [x] Use travis
 - [x] Write some tests
-- [x] Optional animation when changing between tabs
-- [ ] Keyboard navigation
+- [ ] Optional animation when changing between tabs
+- [x] Keyboard navigation
+- [ ] Optional scroll behavior (see: [this issue] (https://github.com/pepjo/react-tabs-navigation/issues/2#issuecomment-167140069))
 
 Contribute
 ------------
