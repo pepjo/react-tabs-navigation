@@ -27,7 +27,7 @@ var defaultStyles = {
     fontSize: 18
   },
   tabsStyle: {
-    height: 40,
+    height: '100%',
     paddingTop: 15,
     marginTop: 0,
     display: 'block',
@@ -38,6 +38,7 @@ var defaultStyles = {
     MozUserSelect: 'none',
     msUserSelect: 'none',
     userSelect: 'none',
+    boxSizing: 'border-box',
     ':focus': {
       boxShadow: 'inset 0 0 8px rgba(11, 104, 159, 0.3)'
     }
@@ -144,7 +145,7 @@ module.exports = Radium(React.createClass({
     var styles = this.styles(); // Gets the user styles for this element
     var filler = this.state.menuFixed ? React.createElement('div', {
       style: {
-        height: styles.tabsStyle.height + styles.tabsStyle.paddingTop + styles.tabsStyle.marginTop
+        height: (styles.tabsBarStyle.height || defaultStyles.tabsBarStyle.height || 0) + (styles.tabsBarStyle.paddingTop || defaultStyles.tabsBarStyle.paddingTop || 0) + (styles.tabsBarStyle.marginTop || defaultStyles.tabsBarStyle.marginTop || 0)
       }
     }) : null;
 
