@@ -5,12 +5,7 @@ var watchify = require('watchify')
 var babelify = require('babelify')
 
 var source = require('vinyl-source-stream')
-var buffer = require('vinyl-buffer')
 var merge = require('utils-merge')
-
-var rename = require('gulp-rename')
-var uglify = require('gulp-uglify')
-var sourcemaps = require('gulp-sourcemaps')
 
 /* nicer browserify errors */
 var gutil = require('gulp-util')
