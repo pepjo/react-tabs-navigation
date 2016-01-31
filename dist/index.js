@@ -68,11 +68,16 @@ module.exports = React.createClass({
     });
   },
   handleTabChange: function handleTabChange(i) {
-    this.setState({
-      selectedTab: i
-    });
+    var result = undefined;
+
     if (this.props.onTabChange) {
-      this.props.onTabChange(i);
+      result = this.props.onTabChange(i);
+    }
+
+    if (result !== false) {
+      this.setState({
+        selectedTab: i
+      });
     }
   },
   render: function render() {

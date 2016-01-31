@@ -64,7 +64,9 @@ This component accept the following props:
 
 * onTabChange [func]
 
-  Function that gets executed when a tab changes, first argument is the index of the tab
+  Function that gets executed when a tab changes, first argument is the index of the tab.
+  If you return `false` the tab will not change. Of course, you will still be
+  able to change it changing the selectedTab prop.
 
 * selected [string|number]
 
