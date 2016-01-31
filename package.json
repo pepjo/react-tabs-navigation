@@ -1,6 +1,6 @@
 {
   "name": "react-tabs-navigation",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "react-tabs-navigation is a nice react component that enables navigation through tabs in your web app.",
   "main": "dist/index.js",
   "scripts": {

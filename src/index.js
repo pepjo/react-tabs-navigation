@@ -57,9 +57,11 @@ module.exports = React.createClass({
     this.calculateWidth()
   },
   componentWillReceiveProps: function (nextProps) {
-    if (typeof nexProps !== 'undefined') {
-      if (nextProps.selected === this.props.selected) {
-        this.handleTabChange(nextProps.selected)
+    if (typeof nextProps.selected !== 'undefined') {
+      if (nextProps.selected !== this.props.selected) {
+        this.setState({
+          selectedTab: nextProps.selected
+        })
       }
     }
   },
