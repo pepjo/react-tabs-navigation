@@ -58,6 +58,7 @@ module.exports = Radium(React.createClass({
     tabsBarClassName: React.PropTypes.string,
     tabsBarStyle: React.PropTypes.object,
     tabsClassName: React.PropTypes.string,
+    tabsContainer: React.PropTypes.any,
     tabsStyle: React.PropTypes.object,
     widthB: React.PropTypes.number
   },
@@ -89,7 +90,7 @@ module.exports = Radium(React.createClass({
   // We should handle scroll events in order to detect when the bar should be
   // fixed
   handleElementScroll: function handleElementScroll() {
-    var top = ReactDom.findDOMNode(this.refs.bar).offsetTop - this.props.fixOffset;
+    var top = ReactDom.findDOMNode(this.props.tabsContainer).offsetTop - this.props.fixOffset;
     if (window.scrollY > top) {
       this.setState({
         menuFixed: true

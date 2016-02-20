@@ -111,6 +111,7 @@ module.exports = React.createClass({
           tabsBarClassName: this.props.tabsBarClassName,
           tabsBarStyle: this.props.tabsBarStyle,
           tabsClassName: this.props.tabsClassName,
+          tabsContainer: this.refs.tabsContainer,
           tabsStyle: this.props.tabsStyle,
           widthB: this.state.width
         })
