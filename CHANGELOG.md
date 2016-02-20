@@ -1,2 +1,1 @@
-added the ability to change tabs by props
-added the ability to block changes by return false onTabChange
+bug: did not scale correctly in some wierd cases

@@ -6,6 +6,7 @@ var ReactDom = require('react-dom');
 
 var Tabs = require('./tabs.js');
 var renderFunction = require('./functions.js').renderFunction;
+var ResizeSensor = require('css-element-queries/src/ResizeSensor');
 
 module.exports = React.createClass({
   displayName: 'tabsNavigationMenu',
@@ -45,7 +46,8 @@ module.exports = React.createClass({
     };
   },
   componentDidMount: function componentDidMount() {
-    window.addEventListener('resize', this.calculateWidth);
+    var element = ReactDom.findDOMNode(this.refs.tabsContainer);
+    new ResizeSensor(element, this.calculateWidth); // eslint-disable-line
     this.calculateWidth();
   },
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
@@ -58,7 +60,8 @@ module.exports = React.createClass({
     }
   },
   componentWillUnmount: function componentWillUnmount() {
-    window.removeEventListener('resize', this.calculateWidth);
+    var element = ReactDom.findDOMNode(this.refs.tabsContainer);
+    ResizeSensor.detach(element);
   },
   // Public method
   changeSelectedTab: function changeSelectedTab(i) {
