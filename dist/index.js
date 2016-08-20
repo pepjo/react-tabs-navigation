@@ -73,7 +73,7 @@ module.exports = React.createClass({
     });
   },
   handleTabChange: function handleTabChange(i) {
-    var result = undefined;
+    var result = void 0;
 
     if (this.props.onTabChange) {
       result = this.props.onTabChange(i);
@@ -105,7 +105,7 @@ module.exports = React.createClass({
           }),
           fixOffset: this.props.fixOffset,
           handleTabChange: this.handleTabChange,
-          lineStyle: this.state.lineStyle,
+          lineStyle: this.props.lineStyle,
           selected: this.state.selectedTab,
           selectedTabStyle: this.props.selectedTabStyle,
           tabsBarClassName: this.props.tabsBarClassName,
