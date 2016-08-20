@@ -109,7 +109,7 @@ module.exports = React.createClass({
             })}
             fixOffset={this.props.fixOffset}
             handleTabChange={this.handleTabChange}
-            lineStyle={this.state.lineStyle}
+            lineStyle={this.props.lineStyle}
             selected={this.state.selectedTab}
             selectedTabStyle={this.props.selectedTabStyle}
             tabsBarClassName={this.props.tabsBarClassName}
