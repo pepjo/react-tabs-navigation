@@ -209,7 +209,7 @@ module.exports = Radium(React.createClass({
         <div style={styleMenu}>
           <nav
             className={this.props.tabsBarClassName}
-            multiselectable="false"
+            aria-multiselectable="false"
             role="tablist"
             style={[defaultStyles.tabsBarStyle, styles.tabsBarStyle]}>
             {elements}
