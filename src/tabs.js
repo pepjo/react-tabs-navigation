@@ -5,6 +5,7 @@ var Color = require('color')
 var Radium = require('radium')
 var React = require('react')
 var ReactDom = require('react-dom')
+var PropTypes = require('prop-types');
 
 var tabKeyMixin = require('./tabsKeyboardNavigationMixin.js')
 
@@ -48,19 +49,19 @@ const defaultStyles = {
 module.exports = Radium(React.createClass({
   displayName: 'tabsNavigationMenu__tabs',
   propTypes: {
-    clic: React.PropTypes.func,
-    color: React.PropTypes.string,
-    elements: React.PropTypes.arrayOf(React.PropTypes.string),
-    fixOffset: React.PropTypes.number,
-    lineStyle: React.PropTypes.object,
-    selected: React.PropTypes.number,
-    selectedTabStyle: React.PropTypes.object,
-    tabsBarClassName: React.PropTypes.string,
-    tabsBarStyle: React.PropTypes.object,
-    tabsClassName: React.PropTypes.string,
-    tabsContainer: React.PropTypes.any,
-    tabsStyle: React.PropTypes.object,
-    widthB: React.PropTypes.number
+    clic: PropTypes.func,
+    color: PropTypes.string,
+    elements: PropTypes.arrayOf(PropTypes.string),
+    fixOffset: PropTypes.number,
+    lineStyle: PropTypes.object,
+    selected: PropTypes.number,
+    selectedTabStyle: PropTypes.object,
+    tabsBarClassName: PropTypes.string,
+    tabsBarStyle: PropTypes.object,
+    tabsClassName: PropTypes.string,
+    tabsContainer: PropTypes.any,
+    tabsStyle: PropTypes.object,
+    widthB: PropTypes.number
   },
   mixins: [tabKeyMixin],
   getDefaultProps: function () {

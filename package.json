@@ -17,12 +17,13 @@
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
-    "radium": "^0.18.1",
     "color": "^0.10.1",
-    "css-element-queries": "^0.3.2"
+    "css-element-queries": "^0.3.2",
+    "radium": "^0.18.1",
+    "react": "^15.6.1"
   },
   "devDependencies": {
-    "babel-cli": "6.1.18",
+    "babel-cli": "^6.1.18",
     "babel-preset-es2015": "6.1.18",
     "babel-preset-react": "6.1.18",
     "babelify": "^7.2.0",
