@@ -3,6 +3,7 @@
 
 var React = require('react')
 var ReactDom = require('react-dom')
+var PropTypes = require('prop-types');
 
 var Tabs = require('./tabs.js')
 var renderFunction = require('./functions.js').renderFunction
@@ -11,34 +12,34 @@ var ResizeSensor = require('css-element-queries/src/ResizeSensor')
 module.exports = React.createClass({
   displayName: 'tabsNavigationMenu',
   propTypes: {
-    banner: React.PropTypes.shape({ // Banner content (optional)
-      children: React.PropTypes.oneOfType([ // Tab initialy selected
-        React.PropTypes.func,
-        React.PropTypes.node
+    banner: PropTypes.shape({ // Banner content (optional)
+      children: PropTypes.oneOfType([ // Tab initialy selected
+        PropTypes.func,
+        PropTypes.node
       ])
     }),
-    color: React.PropTypes.string,
-    fixOffset: React.PropTypes.number,
-    lineStyle: React.PropTypes.object,
-    onTabChange: React.PropTypes.func,
-    selected: React.PropTypes.oneOfType([ // Tab initialy selected
-      React.PropTypes.string,
-      React.PropTypes.number
+    color: PropTypes.string,
+    fixOffset: PropTypes.number,
+    lineStyle: PropTypes.object,
+    onTabChange: PropTypes.func,
+    selected: PropTypes.oneOfType([ // Tab initialy selected
+      PropTypes.string,
+      PropTypes.number
     ]),
-    selectedTabStyle: React.PropTypes.object,
-    tabs: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        children: React.PropTypes.oneOfType([ // Tab initialy selected
-          React.PropTypes.func,
-          React.PropTypes.node
+    selectedTabStyle: PropTypes.object,
+    tabs: PropTypes.arrayOf(
+      PropTypes.shape({
+        children: PropTypes.oneOfType([ // Tab initialy selected
+          PropTypes.func,
+          PropTypes.node
         ]),
-        displayName: React.PropTypes.string.isRequired
+        displayName: PropTypes.string.isRequired
       })
     ),
-    tabsBarClassName: React.PropTypes.string,
-    tabsBarStyle: React.PropTypes.object,
-    tabsClassName: React.PropTypes.string,
-    tabsStyle: React.PropTypes.object
+    tabsBarClassName: PropTypes.string,
+    tabsBarStyle: PropTypes.object,
+    tabsClassName: PropTypes.string,
+    tabsStyle: PropTypes.object
   },
   getDefaultProps: function () {
     return {
